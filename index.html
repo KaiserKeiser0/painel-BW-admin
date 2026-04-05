@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abyssal Admin | True Lab Edition</title>
+    <title>Admin Painel | Black & White </title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
 
@@ -90,7 +90,7 @@
             letter-spacing: 2px;
         }
 
-        #admin-content {
+        #admin-content, #logs-content {
             display: none;
             text-align: left;
         }
@@ -108,7 +108,6 @@
 
     <div id="ocean-floor"></div>
 
-    <!-- 🎵 ÁUDIO OGG LOCAL -->
     <audio id="lab-audio" loop>
         <source src="Here_We_Are.ogg" type="audio/ogg">
     </audio>
@@ -121,16 +120,38 @@
             <button onclick="access()">.¿Confirmam?.</button>
         </div>
 
+        <!-- 🔓 RELATÓRIOS -->
         <div id="admin-content" class="glass-panel">
             <div class="header">
                 <h2>RELATÓRIOS</h2>
-                <span id="timer">FUNCIONAL</span>
+                <span>FUNCIONAL</span>
             </div>
-           <div style="font-size: 13px; color: #888; text-align: left; line-height: 1.8;">
-    <p>Relatório "Kaiser" #001: <a href="https://shre.ink/KaiserPrimeiro" target="_blank">Acessar</a></p>
-    <p>Relatório "Kaiser" #002: Bloqueado</p>
-    <p>Relatório "Kaiser" #003: Bloqueado</p>
-</div>
+
+            <div style="font-size: 13px; color: #888; line-height: 1.8;">
+                <p>Relatório "Kaiser" #001: <a href="https://shre.ink/KaiserPrimeiro" target="_blank">Acessar</a></p>
+                <p>Relatório "Kaiser" #002: Bloqueado</p>
+                <p>Relatório "Kaiser" #003: Bloqueado</p>
+            </div>
+
+            <div style="margin-top: 40px; border: 1px dashed #444; padding: 15px;">
+                <p style="font-size: 12px;">Sessão: Ativada</p>
+                <p style="font-size: 12px;">Local de Permissão: B&W 01</p>
+            </div>
+        </div>
+
+        <!-- 👁️ GRAVAÇÕES -->
+        <div id="logs-content" class="glass-panel">
+            <div class="header">
+                <h2>GRAVAÇÕES</h2>
+                <span>RESTRITO</span>
+            </div>
+
+            <div style="font-size: 13px; color: #888; line-height: 1.8;">
+                <p>Gravação "Kaiser" #001: <a href="https://shre.ink/KaiserAudioPrimeiro" target="_blank">Acessar</a></p>
+                <p>Gravação "Kaiser" #002: Bloqueado</p>
+                <p>Gravação "Kaiser" #003: Bloqueado</p>
+            </div>
+
             <div style="margin-top: 40px; border: 1px dashed #444; padding: 15px;">
                 <p style="font-size: 12px;">Sessão: Ativada</p>
                 <p style="font-size: 12px;">Local de Permissão: B&W 01</p>
@@ -163,7 +184,6 @@
 
         const audio = document.getElementById('lab-audio');
 
-        // 🔥 TOCA COM QUALQUER CLIQUE (garantido)
         document.addEventListener("click", () => {
             audio.play();
         }, { once: true });
@@ -171,12 +191,26 @@
         function access() {
             const pass = document.getElementById('password-field').value;
 
-            if (pass === ".Armas." || pass === ".Guns.") {
-                document.getElementById('login-box').style.display = 'none';
-                document.getElementById('admin-content').style.display = 'block';
+            // 🔥 esconde tudo
+            document.getElementById('login-box').style.display = 'none';
+            document.getElementById('admin-content').style.display = 'none';
+            document.getElementById('logs-content').style.display = 'none';
 
-                audio.play(); // também garante aqui
-            } else {
+            // 🔓 RELATÓRIOS
+            if (pass === ".Armas." || pass === ".Guns.") {
+                document.getElementById('admin-content').style.display = 'block';
+                audio.play();
+            }
+
+            // 👁️ GRAVAÇÕES
+            else if (pass === "PRIMEIROAPELE" || pass === "PrimeiroAPele") {
+                document.getElementById('logs-content').style.display = 'block';
+                audio.play();
+            }
+
+            // ❌ ERRO
+            else {
+                document.getElementById('login-box').style.display = 'block';
                 alert(".¿É apenas isso que os Tabacuders tem a oferecerem?.");
             }
         }
