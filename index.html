@@ -90,7 +90,7 @@
             letter-spacing: 2px;
         }
 
-        #admin-content, #logs-content {
+        #admin-content, #logs-content, #notes-content, #planos-content, #ensinos-content, #tabacuders-content {
             display: none;
             text-align: left;
         }
@@ -157,7 +157,62 @@
                 <p style="font-size: 12px;">Local de Permissão: B&W 01</p>
             </div>
         </div>
+
+<!-- 🧠 NOTAS -->
+<div id="notes-content" class="glass-panel">
+    <div class="header">
+        <h2>NOTAS</h2>
+        <span>CONFIDENCIAL</span>
     </div>
+
+    <div style="font-size: 13px; color: #888; line-height: 1.8;">
+        <p>Nota "Kaiser" #001: <a href="https://shre.ink/NotaPrimeira" target="_blank">Acessar</a></p>
+        <p>Nota "Kaiser" #002: <a href="https://shre.ink/NotaSegunda" target="_blank">Acessar</a></p>
+        <p>Nota "Kaiser" #003: Bloqueado</p>
+    </div>
+</div>
+
+<!-- 🍬 PLANOS -->
+<div id="planos-content" class="glass-panel">
+    <div class="header">
+        <h2>PLANOS</h2>
+        <span>ANÁLISE</span>
+    </div>
+
+    <div style="font-size: 13px; color: #888; line-height: 1.8;">
+        <p>Plano #001: Bloqueado</p>
+        <p>Plano #002: Bloqueado</p>
+        <p>Plano #003: Bloqueado</p>
+    </div>
+</div>
+
+<!-- ⚔️ ENSINOS -->
+<div id="ensinos-content" class="glass-panel">
+    <div class="header">
+        <h2>ENSINOS</h2>
+        <span>PROIBIDO</span>
+    </div>
+
+    <div style="font-size: 13px; color: #888; line-height: 1.8;">
+        <p>Ensino #001: Bloqueado</p>
+        <p>Ensino #002: Bloqueado</p>
+        <p>Ensino #003: Bloqueado</p>
+    </div>
+</div>
+
+<!-- 👥 TABACUDERS -->
+<div id="tabacuders-content" class="glass-panel">
+    <div class="header">
+        <h2>TABACUDERS</h2>
+        <span>RESTRITO</span>
+    </div>
+
+    <div style="font-size: 13px; color: #888; line-height: 1.8;">
+        <p>Arquivo #001: <a href="https://shre.ink/TabacudersPrimeiro" target="_blank">Acessar</a></p>
+        <p>Arquivo #002: Bloqueado</p>
+        <p>Arquivo #003: Bloqueado</p>
+    </div>
+</div>
 
     <script>
         const ocean = document.getElementById('ocean-floor');
@@ -188,32 +243,72 @@
             audio.play();
         }, { once: true });
 
-        function access() {
-            const pass = document.getElementById('password-field').value;
+function access() {
+    const pass = document.getElementById('password-field').value;
 
-            // 🔥 esconde tudo
-            document.getElementById('login-box').style.display = 'none';
-            document.getElementById('admin-content').style.display = 'none';
-            document.getElementById('logs-content').style.display = 'none';
+    document.getElementById('login-box').style.display = 'none';
+    document.getElementById('admin-content').style.display = 'none';
+    document.getElementById('logs-content').style.display = 'none';
+    document.getElementById('notes-content').style.display = 'none';
+    document.getElementById('planos-content').style.display = 'none';
+    document.getElementById('ensinos-content').style.display = 'none';
+    document.getElementById('tabacuders-content').style.display = 'none';
 
-            // 🔓 RELATÓRIOS
-            if (pass === ".Armas." || pass === ".Guns.") {
-                document.getElementById('admin-content').style.display = 'block';
-                audio.play();
-            }
+    // RELATÓRIOS
+    if (pass === ".Armas." || pass === ".Guns.") {
+        document.getElementById('admin-content').style.display = 'block';
+        audio.play();
+    }
 
-            // 👁️ GRAVAÇÕES
-            else if (pass === "PRIMEIROAPELE" || pass === "PrimeiroAPele") {
-                document.getElementById('logs-content').style.display = 'block';
-                audio.play();
-            }
+    // GRAVAÇÕES
+    else if (pass === "PRIMEIROAPELE" || pass === "PrimeiroAPele") {
+        document.getElementById('logs-content').style.display = 'block';
+        audio.play();
+    }
 
-            // ❌ ERRO
-            else {
-                document.getElementById('login-box').style.display = 'block';
-                alert(".¿É apenas isso que os Tabacuders tem a oferecerem?.");
-            }
-        }
+    // NOTAS
+    else if (
+        pass === "Sabores" || pass === "SABORES" ||
+        pass === "Gostos" || pass === "GOSTOS"
+    ) {
+        document.getElementById('notes-content').style.display = 'block';
+        audio.play();
+    }
+
+    // PLANOS
+    else if (
+        pass === "Doce" || pass === "DOCE" ||
+        pass === "Salgado" || pass === "SALGADO" ||
+        pass === "Azedo" || pass === "AZEDO" ||
+        pass === "Amargo" || pass === "AMARGO" ||
+        pass === "Umani" || pass === "UMANI"
+    ) {
+        document.getElementById('planos-content').style.display = 'block';
+        audio.play();
+    }
+
+    // ENSINOS
+    else if (
+        pass === "Vingança" || pass === "VINGANÇA" ||
+        pass === "Destruição" || pass === "DESTRUIÇÃO"
+    ) {
+        document.getElementById('ensinos-content').style.display = 'block';
+        audio.play();
+    }
+
+    // TABACUDERS
+    else if (
+        pass === ".Amigos." || pass === ".Amizades."
+    ) {
+        document.getElementById('tabacuders-content').style.display = 'block';
+        audio.play();
+    }
+
+    else {
+        document.getElementById('login-box').style.display = 'block';
+        alert(".¿É apenas isso que os Tabacuders tem a oferecerem?.");
+    }
+}
 
         createFish();
     </script>
